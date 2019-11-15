@@ -1,0 +1,102 @@
+[
+  {
+    "id": "mariadb",
+    "connection": {
+      "id": "TH-WC-DEV",
+      "type": "MARIADB",
+      "database": "alertsdb",
+      "hostname": "localhost",
+      "port": 3308,
+      "user": "",
+      "password": ""
+    },
+    "views": [
+      {
+        "name": "alertas.full",
+        "path": "./api/databases/views/maria-db/alertas.full.sql"
+      }
+    ]
+  },
+  {
+    "id": "mysql-demo1",
+    "connection": {
+      "id": "TH-WC-DEV",
+      "type": "MYSQL",
+      "database": "sic",
+      "hostname": "localhost",
+      "port": 3306,
+      "user": "",
+      "password": ""
+    },
+    "views": [
+      {
+        "name": "alertas.full",
+        "path": "./src/databases/querysql/mysql/queries.sql"
+      }
+    ]
+  },
+  {
+    "id": "db2-th-wc-dev",
+    "connection": {
+      "id": "TH-WC-DEV",
+      "type": "DB2",
+      "database": "DEMO",
+      "hostname": "10.11.13.169",
+      "port": 50000,
+      "user": "operador",
+      "password": ""
+    },
+    "views": [
+      {
+        "name": "cliente.ventas.full",
+        "path": "./src/databases/querysql/db2-th-wc-dev/cliente.ventas.full.sql"
+      },
+      {
+        "name": "interno.jobs.monitor",
+        "path": "./src/databases/querysql/db2-th-wc-dev/interno.jobs.monitor.sql"
+      },
+      {
+        "name": "interno.products.items.publicados",
+        "path": "./src/databases/querysql/db2-th-wc-dev/interno.products.items.publicados.sql"
+      },
+      {
+        "name": "interno.ventas.full",
+        "path": "./src/databases/querysql/db2-th-wc-dev/interno.ventas.full.sql"
+      }
+    ]
+  },
+  {
+    "id": "mongodb",
+    "connection": {
+      "id": "MONGO-DB",
+      "type": "MONGODB",
+      "database": "alertsdb",
+      "hostname": "localhost",
+      "port": 3308,
+      "user": "",
+      "password": ""
+    },
+    "views": [
+      {
+        "name": "alertas.full2",
+        "path": "./src/databases/querysql/maria-db/alertas.full.sql"
+      },
+      {
+        "name": "alertas.full4",
+        "path": "./src/databases/querysql/maria-db/alertas.full.sql"
+      },
+      {
+        "name": "alertas.full4",
+        "path": "./src/databases/querysql/maria-db/alertas.full.sql"
+      },
+      {
+        "name": "alertas.full5",
+        "path": "./src/databases/querysql/maria-db/alertas.full.sql"
+      },
+      {
+        "name": "alertas.full5",
+        "path": "./src/databases/querysql/maria-db/alertas.full.sql"
+      }
+    ]
+  }
+]
