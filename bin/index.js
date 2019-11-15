@@ -16,8 +16,13 @@ const shell = require('shelljs')
 const MODE_0666 = parseInt('0666', 8)
 const MODE_0755 = parseInt('0755', 8)
 const _exit = process.exit
-const ROOT_API_DIR = path.join(__dirname, '..', 'api')
 
+// prod
+// const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
+// dev
+const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
+const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
+console.log(ROOT_API_DIR)
 const greeting = chalk.white.bold('Welcome To db Package');
 
 const boxenOptions = {
@@ -102,7 +107,7 @@ function mkdir(base, dir) {
  */
 
 function copyTemplate(from, to) {
-  write(to, fs.readFileSync(path.join(ROOT_API_DIR, from), 'utf-8'))
+  write(to, fs.readFileSync(path.join(ROOT_API_DIR_TEMPLATE, from), 'utf-8'))
 }
 
 function createApplication(name, dir) {
@@ -133,8 +138,10 @@ function createApplication(name, dir) {
 
   //copyTemplate('index.html', path.join(dir, 'index.html'))
   copyTemplate('index.js', path.join(dir, 'index.js'))
-  copyTemplateMulti('routes', dir + '/routes', '*.js')
-  copyTemplateMulti('services', dir + '/services', '*.js')
+  copyTemplateMulti('../api/routes', dir + '/routes', '*.js')
+  copyTemplateMulti('../api/services', dir + '/services', '*.js')
+  copyTemplateMulti('../api/databases/', dir + '/databases', '*.js')
+  copyTemplateMulti('../api/databases/', dir + '/databases', '*.json')
 
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 
@@ -144,26 +151,13 @@ function createApplication(name, dir) {
 
 // INIT APP STRUCTURE PROJECT
 if (os.platform() === 'win32') {
-  createApplication('server', path.join(__dirname, '..', '.apiserver'))
+  createApplication('server', ROOT_API_DIR)
 } else {
-  createApplication('server', path.join(__dirname, '..', '.apiserver'))
+  createApplication('server', ROOT_API_DIR)
 }
 
 // Working directory for subprocess of installer
 const cwd = path.join(__dirname, '..', '.apiserver')
-
-
-// exec('sh ./bin/build.sh hola juam', (error, stdout, stderr) => {
-//   if (error) {
-//     console.error(`exec error: ${error}`);
-//     return;
-//   }
-//   console.log(`stdout: ${stdout}`);
-// });
-
-
-
-
 
 
 /**pwd
