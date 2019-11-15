@@ -19,10 +19,15 @@ const _exit = process.exit
 
 // prod
 // const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
+// const ROOT_PATH_FROM = ''
+//const ROOT_API_DIR_COPY = ''
+
 // dev
 const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
 const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
-console.log(ROOT_API_DIR)
+const ROOT_PATH_FROM = '../api'
+const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
+
 const greeting = chalk.white.bold('Welcome To db Package');
 
 const boxenOptions = {
@@ -81,12 +86,6 @@ const output = heading + newline + newline + working + newline + twittering + ne
 
 console.log(chalk.green(boxen(output, options)))
 
-// console.log(greeting1);
-
-//var destinationPath = program.args.shift() || '.'
-console.log('-----------')
-//console.log(destinationPath)
-
 
 /**
  * Make the given dir relative to base.
@@ -102,13 +101,6 @@ function mkdir(base, dir) {
   mkdirp.sync(loc, MODE_0755)
 }
 
-/**
- * Copy file from template directory.
- */
-
-function copyTemplate(from, to) {
-  write(to, fs.readFileSync(path.join(ROOT_API_DIR_TEMPLATE, from), 'utf-8'))
-}
 
 function createApplication(name, dir) {
   var app = loadTemplate('index.js')
@@ -138,10 +130,10 @@ function createApplication(name, dir) {
 
   //copyTemplate('index.html', path.join(dir, 'index.html'))
   copyTemplate('index.js', path.join(dir, 'index.js'))
-  copyTemplateMulti('../api/routes', dir + '/routes', '*.js')
-  copyTemplateMulti('../api/services', dir + '/services', '*.js')
-  copyTemplateMulti('../api/databases/', dir + '/databases', '*.js')
-  copyTemplateMulti('../api/databases/', dir + '/databases', '*.json')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/routes`, dir + '/routes', '*.js')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/services`, dir + '/services', '*.js')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.js')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.json')
 
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 
@@ -156,9 +148,19 @@ if (os.platform() === 'win32') {
   createApplication('server', ROOT_API_DIR)
 }
 
-// Working directory for subprocess of installer
-const cwd = path.join(__dirname, '..', '.apiserver')
 
+/**
+ * Copy file from template directory.
+ */
+
+function copyTemplate(from, to) {
+  write(to, fs.readFileSync(path.join(ROOT_API_DIR_TEMPLATE, from), 'utf-8'))
+}
+
+function copyTemplateMJS(from, to) {
+  console.log('FINAL PATH', path.join(from))
+  writeMulti(to, fs.readFileSync(path.join(ROOT_API_DIR_COPY, from), 'utf-8'))
+}
 
 /**pwd
  * echo str > file.
@@ -172,15 +174,20 @@ function write(file, str, mode) {
   console.log('   \x1b[36mcreate\x1b[0m : ' + file)
 }
 
+function writeMulti(file, str, mode) {
+  fs.writeFileSync(file, str, { mode: mode || MODE_0666 })
+  console.log('   \x1b[36mcreate\x1b[0m : ' + file)
+}
+
 /**
  * Copy multiple files from template directory.
  */
 
 function copyTemplateMulti(fromDir, toDir, nameGlob) {
-  fs.readdirSync(path.join(ROOT_API_DIR, fromDir))
+  fs.readdirSync(path.join(ROOT_API_DIR_COPY, fromDir))
     .filter(minimatch.filter(nameGlob, { matchBase: true }))
     .forEach(function (name) {
-      copyTemplate(path.join(fromDir, name), path.join(toDir, name))
+      copyTemplateMJS(path.join(fromDir, name), path.join(toDir, name))
     })
 }
 
