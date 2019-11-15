@@ -1,10 +1,11 @@
 {
   "name": "db-avatar-init",
-  "version": "1.0.4",
+  "version": "1.0.7",
   "description": "",
   "main": "bin/index.js",
   "bin": {
-    "db-init": "bin/index.js"
+    "db-init": "bin/index.js",
+    "init-sh": "bin/build.sh"
   },
   "scripts": {
     "test": "echo \"Error: no test specifiedssss\" && exit 1",

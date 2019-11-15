@@ -1,9 +1,10 @@
 #!/bin/bash
 pwd
-echo "First arg: $1"
-echo "Second arg: $2"
+URL_PATH_UP=$1
+echo "url llegando: $URL_PATH_UP"
 #cd ..
-cd D:/Avatar-demos/db-viewer/.apiserver
+cd $URL_PATH_UP
 pwd
+npm install
 #npm install
-#node index.js
+node index.js

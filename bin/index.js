@@ -19,14 +19,16 @@ const _exit = process.exit
 
 // prod
 // const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
-// const ROOT_PATH_FROM = ''
-//const ROOT_API_DIR_COPY = ''
+// const ROOT_API_DIR_COPY = ''
+// const ROOT_PATH_FROM = path.join(__dirname, `..`, 'api')
+// const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
 
 // dev
-const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
 const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
+const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
 const ROOT_PATH_FROM = '../api'
 const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
+const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
 
 const greeting = chalk.white.bold('Welcome To db Package');
 
@@ -138,7 +140,8 @@ function createApplication(name, dir) {
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 
   // start app
-  shell.exec('sh ./bin/build.sh')
+  // shell.exec('sh ./bin/build.sh')
+  shell.exec(`sh ${path.join(ROOT_PATH_FROM_SH, '/build.sh')} ${path.join(ROOT_API_DIR)}`)
 }
 
 // INIT APP STRUCTURE PROJECT
