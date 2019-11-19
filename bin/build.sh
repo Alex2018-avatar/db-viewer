@@ -7,4 +7,4 @@ cd $URL_PATH_UP
 pwd
 npm install
 #npm install
-node index.js
+#node index.js

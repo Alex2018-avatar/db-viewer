@@ -17,11 +17,13 @@ const MODE_0666 = parseInt('0666', 8)
 const MODE_0755 = parseInt('0755', 8)
 const _exit = process.exit
 
+// -----------------------------------------------------------------------------
 // prod
 // const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
 // const ROOT_API_DIR_COPY = ''
 // const ROOT_PATH_FROM = path.join(__dirname, `..`, 'api')
 // const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
+// const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `../../..`, '.apiserver')
 
 // dev
 const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
@@ -29,6 +31,10 @@ const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
 const ROOT_PATH_FROM = '../api'
 const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
 const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
+const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `..`, '.apiserver')
+
+// -----------------------------------------------------------------------------
+
 
 const greeting = chalk.white.bold('Welcome To db Package');
 
@@ -44,13 +50,13 @@ console.log(msgBox);
 
 console.log(os.platform())
 
-// Definindo as opções para o ‘boxen’:
+// Definimos las opcoindes para el ‘boxen’:
 const options = {
   padding: 1,
   margin: 1,
   borderStyle: 'round'
 }
-// Inclusão do Text e mais as definições do ‘chalk’:
+// Inclusión de texto más definiciones de ‘chalk’:
 const data = {
   name: chalk.white('Glaucia Lemos /'),
   handle: chalk.cyan('glaucia_lemos86'),
@@ -71,7 +77,7 @@ const data = {
   labelCard: chalk.white.bold('      Card:')
 }
 
-// Aqui será a saída do nosso Cartão Pessoal em NPX:
+// Aquí estará la salida de nuestra tarjeta personal NPX:
 const newline = '\n'
 const heading = `${data.name} ${data.handle}`
 const working = `${data.labelWork}  ${data.work}`
@@ -82,10 +88,9 @@ const mediuming = `${data.labelMedium}  ${data.medium}`
 const webing = `${data.labelWeb}  ${data.web}`
 const carding = `${data.labelCard}  ${data.npx}`
 
-// Aqui devemos colocar toda a nossa saída numa única variável para que possamos usar 
-// o ‘boxen de maneira efetiva: 
+// Aquí debemos poner toda nuestra salida en una variable para que podamos usar 
+// o ‘boxen de manera efetiva:
 const output = heading + newline + newline + working + newline + twittering + newline + githubing + newline + linkedining + newline + mediuming + newline + webing + newline + newline + carding
-
 console.log(chalk.green(boxen(output, options)))
 
 
@@ -105,25 +110,29 @@ function mkdir(base, dir) {
 
 
 function createApplication(name, dir) {
-  var app = loadTemplate('index.js')
-
-  console.log(app)
   // Package
   var pkg = {
     name: name,
-    version: '1.0.0',
+    version: '1.0.1',
     private: true,
     scripts: {
       start: 'node index.js'
     },
     dependencies: {
       'debug': '~2.6.9',
-      'express': '^4.17.1'
+      'express': '^4.17.1',
+      "cors": "^2.8.5"
     }
   }
-  mkdir(dir, 'databases/queries')
+  mkdir(dir, 'databases/views')
+  mkdir(dir, 'databases/views/mariadb')
+  mkdir(dir, 'databases/views/mysql')
+  mkdir(dir, 'databases/views/db2')
   mkdir(dir, 'models/')
   mkdir(dir, 'services/')
+  mkdir(dir, 'public/css')
+  mkdir(dir, 'public/img')
+  mkdir(dir, 'public/js')
   //mkdir(dir, 'public/images')
   //mkdir(dir, 'public/stylesheets')
 
@@ -137,11 +146,18 @@ function createApplication(name, dir) {
   copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.js')
   copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.json')
 
+  copyTemplate(`${ROOT_PATH_FROM}/public/index.html`, path.join(dir, 'public','index.html'))
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/js/`, dir + '/public/js', '*.js')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/css/`, dir + '/public/css', '*.css')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.jpg')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.svg')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.png')
+
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 
   // start app
   // shell.exec('sh ./bin/build.sh')
-  shell.exec(`sh ${path.join(ROOT_PATH_FROM_SH, '/build.sh')} ${path.join(ROOT_API_DIR)}`)
+  shell.exec(`sh ${path.join(ROOT_PATH_FROM_SH, '/build.sh')} ${path.join(ROOT_PATH_FROM_SH_INSTALL)}`)
 }
 
 // INIT APP STRUCTURE PROJECT

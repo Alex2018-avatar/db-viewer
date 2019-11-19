@@ -1,9 +1,9 @@
 [
   {
     "id": "mariadb",
+    "type": "MARIADB",
     "connection": {
       "id": "TH-WC-DEV",
-      "type": "MARIADB",
       "database": "alertsdb",
       "hostname": "localhost",
       "port": 3308,
@@ -13,15 +13,15 @@
     "views": [
       {
         "name": "alertas.full",
-        "path": "./api/databases/views/maria-db/alertas.full.sql"
+        "path": "/mariadb/alertas.full.sql"
       }
     ]
   },
   {
     "id": "mysql-demo1",
+    "type": "MYSQL",
     "connection": {
       "id": "TH-WC-DEV",
-      "type": "MYSQL",
       "database": "sic",
       "hostname": "localhost",
       "port": 3306,
@@ -37,9 +37,9 @@
   },
   {
     "id": "db2-th-wc-dev",
+    "type": "DB2",
     "connection": {
       "id": "TH-WC-DEV",
-      "type": "DB2",
       "database": "DEMO",
       "hostname": "10.11.13.169",
       "port": 50000,
@@ -67,9 +67,9 @@
   },
   {
     "id": "mongodb",
+    "type": "MONGODB",
     "connection": {
       "id": "MONGO-DB",
-      "type": "MONGODB",
       "database": "alertsdb",
       "hostname": "localhost",
       "port": 3308,

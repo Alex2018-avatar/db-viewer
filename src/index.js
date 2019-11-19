@@ -116,7 +116,9 @@ class DBViewer {
       if (view.length === 0) {
         console.log('process canceled, not found view')
       } else {
-        let querystmt = await fs.readFileSync(view[0].path, 'utf8');
+        console.log(view[0].path)
+        const pathViews = process.env.PATH_BASE_VIEWS || './.apiserver/databases/views'
+        let querystmt = await fs.readFileSync(`${pathViews}${view[0].path}`, 'utf8');
         let data = await db.executeView(querystmt)
 
         // write json data from db

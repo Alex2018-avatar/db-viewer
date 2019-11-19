@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="css/style.css" rel="stylesheet">
+  <title>Document</title>
+</head>
+
+<body>
+  <div class="container">
+    <!-- <div class="container-fluid"> -->
+    <!-- <div class="header-db-views"></div> -->
+
+
+    <div class="search-content">
+      <div class="header__logo"></div>
+      <!-- BEGIN: Search ontainer -->
+      <form class="search">
+        <select name="" id="" class="search__field">
+          <option value="">Todos</option>
+          <option value="MARIADB">Maria DB</option>
+          <option value="MYSQL">MySQL</option>
+          <option value="DB2">DB2</option>
+        </select>
+
+        <button class="btn search__btn">
+          <svg class="search__icon">
+            <use href="img/icons.svg#icon-magnifying-glass"></use>
+          </svg>
+          <span>Search</span>
+        </button>
+      </form>
+      <!-- END: Search ontainer -->
+      <div class="likes"></div>
+    </div>
+
+    <div class="menu-container-aside">
+      <ul class="options-view">
+        <li>
+          <div class="results__link">
+            <button class="btn search__btn btn-menu-register">
+              <span>Agregar</span>
+            </button>
+          </div>
+        </li>
+        <li>
+          <div class="results__link btn-menu-update">
+            <button class="btn search__btn">
+              <span>Actualizar</span>
+            </button>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div class="content-body">
+      <div class="table-content">
+        <table class="table">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Base de Datos</th>
+              <th scope="col">Puerto</th>
+              <th scope="col">Host</th>
+            </tr>
+          </thead>
+          <tbody class="results__list"></tbody>
+        </table>
+      </div>
+
+      <div class="register-db" style="display: none;">
+
+        <form class="register" name="register">
+          <h1 class="title">Registrar Base de Datos</h1>
+          <div class="form-group">
+            <select name="dbtype" id="dbtype" class="form-input">
+              <option value="">Todos</option>
+              <option value="MARIADB">Maria DB</option>
+              <option value="MYSQL">MySQL</option>
+              <option value="DB2">DB2</option>
+            </select>
+
+          </div>
+          <div class="form-group">
+            <label for="">Nombre de la BD: </label>
+            <input type="text" name="dbname" id="dbname" class="form-input"
+              placeholder="Ingrese Nombre de la Base de datos">
+          </div>
+          <div class="form-group">
+            <label for="">Hostname de la BD: </label>
+            <input type="text" name="dbhost" id="dbhost" class="form-input"
+              placeholder="Ingrese Hostname de la Base de datos">
+          </div>
+          <div class="form-group">
+            <label for="">Port de la BD: </label>
+            <input type="text" name="dbport" id="dbport" class="form-input"
+              placeholder="Ingrese puerto de conexion de la base de datos">
+          </div>
+          <div class="form-group">
+            <label for="">User de la BD: </label>
+            <input type="text" name="dbuser" id="dbuser" class="form-input"
+              placeholder="Ingrese Usuario de connecion de la Base de datos">
+          </div>
+          <div class="form-group">
+            <label for="">Password de la BD: </label>
+            <input type="text" placeholder="Ingrese Password de la Base de datos">
+          </div>
+
+          <div class="form-group">
+            <label for="">Agregar vistas: </label>
+            <div class="form-group form-buttons-view">
+              <button class="btn open-views-form">Agregar +</button>
+              <div class="views-form">
+                <div class="header-views-form">
+                  <button class="btn-small add-item-view">
+                    <svg>
+                      <use href="img/icons.svg#icon-circle-with-plus"></use>
+                    </svg>
+                  </button>
+                </div>
+                <div class="form-vw">
+                  <div class="form-group form-group-view">
+                    <label for="">Nombre de la vista: </label>
+                    <input type="text" name="nameview" id="nameview" class="input-item-view" placeholder="Ingrese Nombre de la vista">
+                  </div>
+                  <div class="form-group form-group-view">
+                    <label for="">Ruta de la vista: </label>
+                    <input type="text" name="pathview" id="pathview" class="input-item-view" placeholder="Ingrese Ruta de la vista">
+                  </div>
+                </div>
+                <div class="inserted-items">
+                  <!-- <ul class="view-result-thead">
+                    <li>Nombre</li>
+                    <li>Ruta</li>
+                    <li>Eliminar</li>
+                  </ul> -->
+                  <!-- <ul class="view-result-tbody">
+                    <li>Nombre</li>
+                    <li>Ruta</li>
+                    <li>
+                      <button class="btn-small">
+                        <svg>
+                          <use href="img/icons.svg#icon-circle-with-minus"></use>
+                        </svg>
+                      </button>
+                    </li>
+                  </ul> -->
+                </div>
+              </div>
+            </div>
+          </div>
+          <button class="btn save_database_btn">
+            <span>Guardar</span>
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- </div> -->
+  </div>
+<script type="text/javascript" src="js/1.bundle.js"></script><script type="text/javascript" src="js/bundle.js"></script></body>
+
+</html>
