@@ -1,13 +1,20 @@
 'use strict'
 
-const DBS_PATH = '../databases/databases.json'
-
 class DBServices {
   constructor() {
-    this.databases = require(DBS_PATH);
+    this.databases = require('../databases/databases.json');
   }
   getRegisteredDatabases() {
     return this.databases
+  }
+
+  loadData (path) {
+    try {
+      return this.databases
+    } catch (err) {
+      console.error(err)
+      return false
+    }
   }
 }
 

@@ -5,6 +5,7 @@ const bodyParser = require('body-parser')
 const morgan = require('morgan')
 const path = require('path')
 const cors = require('cors')
+const passport = require('./services/passport')
 
 const app = express()
 
@@ -16,7 +17,7 @@ app.use(bodyParser.json())
 app.use(morgan('short'))
 app.use(cors())
 
-//app.use('/static', express.static(path.join(__dirname, 'public')))
+app.use('/', express.static(path.join(__dirname, 'public')))
 
 // viewed at http://localhost:8080
 app.get('/', function(req, res) {

@@ -2,6 +2,8 @@
 
 const express = require('express')
 const fs = require('fs')
+const jwt =require('jsonwebtoken')
+
 const router = express.Router()
 
 const DBViewer = require('../services/dbs.services')
@@ -37,14 +39,18 @@ router.get('/v1/getById/:id', (request, response) => {
  * si existe el ID devuelve error
  */
 router.post('/v1/registerDB', async (request, response) => {
-  let querystmt = await fs.readFileSync('./.apiserver/databases/databases.json', 'utf8');
- 
-  const jsonData = JSON.parse(querystmt)
-  jsonData.push(request.body)
-  fs.writeFile('./.apiserver/databases/databases.json', JSON.stringify(jsonData, undefined, 2), 'utf8', err =>{
-    if (err) return console.log(err);
-  });
-  response.send(request.body)
+  try {
+    const dbs = new DBViewer()
+    let querystmt = dbs.getRegisteredDatabases();
+
+    querystmt.push(request.body)
+    fs.writeFile('./.apiserver/databases/databases.json', JSON.stringify(querystmt, undefined, 2), 'utf8', err =>{
+      if (err) return console.log(err);
+    });
+    response.send(querystmt)
+  } catch (error) {
+    response.status(400).send({message: error.message})
+  }
 })
 
 /**
@@ -55,5 +61,18 @@ router.post('/v1/registerDB', async (request, response) => {
 router.post('/addView', (request, response) => {
 
 })
+
+router.post('/v1/loginidentity', (request, response) => {
+  const user = 'admin'
+  const pass = 'Avatar123'
+  const {logonId, logonPassword} = request.body
+  if (user === logonId && pass === logonPassword) {
+    var token = jwt.sign({ logonId: logonId }, 'shhhhh');
+    response.status(200).send({token: token})
+  } else {
+    response.status(401).send({message: 'No tiene Autorizacion'})
+  }
+})
+
 
 module.exports = router

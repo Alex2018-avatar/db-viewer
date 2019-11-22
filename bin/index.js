@@ -19,19 +19,20 @@ const _exit = process.exit
 
 // -----------------------------------------------------------------------------
 // prod
-// const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
-// const ROOT_API_DIR_COPY = ''
-// const ROOT_PATH_FROM = path.join(__dirname, `..`, 'api')
-// const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
-// const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `../../..`, '.apiserver')
+const ROOT_API_DIR =  path.join(__dirname, '../../..', '.apiserver')
+const ROOT_API_DIR_COPY = ''
+const ROOT_PATH_FROM = path.join(__dirname, `..`, 'api')
+const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
+const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `../../..`, '.apiserver')
 
 // dev
 const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
-const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
-const ROOT_PATH_FROM = '../api'
-const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
-const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
-const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `..`, '.apiserver')
+const ROOT_API_DIR_WEB = path.join(__dirname, '..', 'public')
+// const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
+// const ROOT_PATH_FROM = '../api'
+// const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
+// const ROOT_PATH_FROM_SH = path.join(__dirname, `..`, 'bin')
+// const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `..`, '.apiserver')
 
 // -----------------------------------------------------------------------------
 
@@ -146,7 +147,7 @@ function createApplication(name, dir) {
   copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.js')
   copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.json')
 
-  copyTemplate(`${ROOT_PATH_FROM}/public/index.html`, path.join(dir, 'public','index.html'))
+  copyTemplate(`/public/index.html`, path.join(dir, 'public','index.html'))
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/js/`, dir + '/public/js', '*.js')
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/css/`, dir + '/public/css', '*.css')
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.jpg')
