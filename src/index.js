@@ -119,15 +119,21 @@ class DBViewer {
         console.log(view[0].path)
         const pathViews = process.env.PATH_BASE_VIEWS || './.apiserver/databases/views'
         let querystmt = await fs.readFileSync(`${pathViews}${view[0].path}`, 'utf8');
+
         let data = await db.executeView(querystmt)
 
         // write json data from db
         fs.writeFileSync(fileNamePath, JSON.stringify(data, null, "\t"), { mode: 0o666 || MODE_0666 })
 
         if (mail) {
-          await this.sendMail(fileNamePath, mailOptions)
-          this.unlinkFile(fileNamePath)
-          callback(null, data)
+          try {
+            await this.sendMail(fileNamePath, mailOptions)
+            this.unlinkFile(fileNamePath)
+            callback(null, data)
+          } catch (error) {
+            this.unlinkFile(fileNamePath)
+            callback({message: 'An error occurred while sending email'})
+          }
         } else {
           this.unlinkFile(fileNamePath)
           callback(null, data)

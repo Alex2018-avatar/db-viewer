@@ -15,12 +15,13 @@ class database{
       this.connection.user = credentials.user;
       this.connection.password = credentials.password;
       this.views = db.views;
+      this.type = db.type;
     }
   }
 
   executeView(query){
     return new Promise(async (resolve, reject) => {
-      switch (this.connection.type) {
+      switch (this.type) {
         case 'DB2':
           const db2 = new DB2(this.connection);
           const dataDb2 = await db2.executeView(query);
@@ -40,6 +41,7 @@ class database{
           break
         
         default:
+            reject({message: 'not found database'})
           break;
       }
     })

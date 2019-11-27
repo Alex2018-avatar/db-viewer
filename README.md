@@ -1,1 +1,80 @@
+[![Avatar Logo](https://www.avatar-global.com/website/img/logo.png)](https://www.avatar-global.com/)
+
 # db-viewer
+Database Management Module
+
+
+## Installation
+
+```bash
+$ npm i db-avatar-init
+```
+
+## Usage
+```js
+
+'use strict' 
+
+const DBViewer = require('db-avatar-init')
+
+const options = {
+  dbId: 'xxxx',
+  viewName: 'xxxxx.sql',
+  user: 'xxxxx',
+  password: 'xxxx'
+};
+
+const mailConfig = {
+  mail: true,
+  mailConfig: {
+    "name": "test",
+    "from": "ddddd@gggggg.com",
+    "to": [
+      "xxxxx@xxxx.com",
+    ],
+    "cc": [],
+    "bcc": []
+  },
+  subject: "Subject Test",
+  htmlBody: `<p></p>
+  `
+}
+
+DBViewer.executeView(options, mailConfig, (error, data) => {
+  if(error) {
+    console.log(error.message)
+  } else {
+    console.log(data)
+  }
+})
+```
+
+## add in your package.json scripts
+
+```json
+"scripts": {
+  "db-init": "db-init",
+  "mail-init": "init-credentials"
+},
+```
+
+# execute
+```bash
+$ npm run db-init
+```
+
+# Init gmail configurations 
+- download gmail acount credentials
+
+```bash
+$ npm run mail-init
+```
+
+## License
+
+  [MIT](LICENSE)
+
+### Collaborators
+1. First list item
+   - First nested list item
+     - Second nested list item
