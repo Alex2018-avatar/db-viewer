@@ -28,6 +28,7 @@ const ROOT_PATH_FROM_SH_INSTALL = path.join(__dirname, `../../..`, '.apiserver')
 // dev
 const ROOT_API_DIR_TEMPLATE = path.join(__dirname, '..', 'api')
 const ROOT_API_DIR_WEB = path.join(__dirname, '..', 'public')
+
 // const ROOT_API_DIR = path.join(__dirname, '..', '.apiserver')
 // const ROOT_PATH_FROM = '../api'
 // const ROOT_API_DIR_COPY = path.join(__dirname, '..', '.apiserver')
@@ -122,7 +123,9 @@ function createApplication(name, dir) {
     dependencies: {
       'debug': '~2.6.9',
       'express': '^4.17.1',
-      "cors": "^2.8.5"
+      "cors": "^2.8.5",
+      "helmet": "^3.21.2",
+      "compression": "^1.7.4"
     }
   }
   mkdir(dir, 'databases/views')
@@ -153,6 +156,7 @@ function createApplication(name, dir) {
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.jpg')
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.svg')
   copyTemplateMulti(`${ROOT_PATH_FROM}/public/img/`, dir + '/public/img', '*.png')
+  copyTemplateMulti(`${ROOT_PATH_FROM}/public/`, dir + '/public', '*.ico')
 
   write(path.join(dir, 'package.json'), JSON.stringify(pkg, null, 2) + '\n')
 

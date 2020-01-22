@@ -32,7 +32,12 @@ class DBViewer {
       try {
         const response = await fetch(`http://localhost:3000/dbs/v1/getById/${dbId}`)
         const json = await response.json()
-        resolve(json)
+        if (response.status === 200) {
+          const json = await response.json()
+          resolve(json)
+        } else {
+          throw new Error(`${response.status}`)
+        }
       } catch (error) {
         reject(error)
       }
@@ -117,7 +122,7 @@ class DBViewer {
         console.log('process canceled, not found view')
       } else {
         console.log(view[0].path)
-        const pathViews = process.env.PATH_BASE_VIEWS || './.apiserver/databases/views'
+        const pathViews = process.env.PATH_BASE_VIEWS || './.apiserver/databases/'
         let querystmt = await fs.readFileSync(`${pathViews}${view[0].path}`, 'utf8');
 
         let data = await db.executeView(querystmt)
