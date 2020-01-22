@@ -23,21 +23,34 @@ class database{
     return new Promise(async (resolve, reject) => {
       switch (this.type) {
         case 'DB2':
-          const db2 = new DB2(this.connection);
-          const dataDb2 = await db2.executeView(query);
-          resolve(dataDb2)
+          try {
+            const db2 = new DB2(this.connection);
+            const dataDb2 = await db2.executeView(query);
+            resolve(dataDb2)
+          } catch (error) {
+            reject(error.message)
+          }
+          
           break;
         
         case 'MYSQL':
-          const mysql = new MYSQL(this.connection);
-          const dataMysql = await mysql.executeView(query)
-          resolve(dataMysql)
+          try {
+            const mysql = new MYSQL(this.connection);
+            const dataMysql = await mysql.executeView(query)
+            resolve(dataMysql)
+          } catch (error) {
+            reject(error.message)
+          }
           break;
         
         case 'MARIADB':
-          const mariadb = new MariaDB(this.connection)
-          const dataMariadb = await mariadb.executeView(query)
-          resolve(dataMariadb)
+          try {
+            const mariadb = new MariaDB(this.connection)
+            const dataMariadb = await mariadb.executeView(query)
+            resolve(dataMariadb)
+          } catch (error) {
+            reject(error.message)
+          }
           break
         
         default:

@@ -1,7 +1,6 @@
 'use strict'
 
 const ibmdb = require('ibm_db')
-const util = require('util')
 
 class DB2 {
   constructor(connection) {
