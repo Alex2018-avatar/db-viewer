@@ -1,7 +1,6 @@
 'use strict'
 
 const fs = require('fs')
-const { Mail, Message } = require('gmailclient')
 const moment = require('moment')
 const fetch = require('node-fetch')
 
@@ -56,34 +55,17 @@ class DBViewer {
     }
   }
 
-  async sendMail(attachment, options) {
-    try {
-      const mail_client = new Mail()
-      const { subject, htmlBody, mailConfig } = options;
-      const { from, to, cc, bcc } = mailConfig
 
-      const message = new Message('html');
-      message.compose(from, to, cc, bcc, subject, htmlBody || '');
-      attachment ? message.addAttachment(attachment) : ''
-      await mail_client.send(message);
-      return {}
-    } catch (error) {
-      console.log(error.message)
-      throw new Error(error)
-    }
-  }
-
-  async executeView(options, mailOptions = {}, callback) {
+  async executeView(options, callback) {
     try {
       // database options
       const { dbId, viewName, user, password } = options;
       const credentials = { 'user': user, 'password': password };
-      const { mail } = mailOptions
 
       let json = await this.getById(dbId)
-
       // get database configuration
       const db = new Database(dbId, credentials, json)
+
       if (db.views) {
         // get sql query view
         const view = db.views.filter(view => view.name === viewName);
@@ -101,20 +83,8 @@ class DBViewer {
 
           // write json data from db
           fs.writeFileSync(fileNamePath, JSON.stringify(data, null, "\t"), { mode: 0o666 || MODE_0666 })
-
-          if (mail) {
-            try {
-              await this.sendMail(fileNamePath, mailOptions)
-              this.unlinkFile(fileNamePath)
-              callback(null, data)
-            } catch (error) {
-              this.unlinkFile(fileNamePath)
-              callback({message: 'An error occurred while sending email'})
-            }
-          } else {
-            this.unlinkFile(fileNamePath)
-            callback(null, data)
-          }
+          this.unlinkFile(fileNamePath)
+          callback(null, data);
         }
       } else {
         callback({message: 'No se encontro base de datos'})

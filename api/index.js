@@ -14,6 +14,7 @@ const passport = require('./services/passport')
 const app = express()
 app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')))
 
+const log = require('./services/logger')
 const dbsRoutes = require('./routes/dbs.routes')
 const PORT = process.env.NODE_API_DB_PORT || 3000
 
@@ -22,7 +23,11 @@ app.use(helmet())
 app.use(compression())
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-app.use(morgan('short'))
+app.use(morgan('combined', {
+  stream: {
+    write: message => log.info(message.trim())
+  }
+}))
 app.use(cors())
 
 app.use('/', express.static(path.join(__dirname, 'public')))
@@ -36,5 +41,7 @@ app.get('/', function(req, res) {
 app.use('/dbs', dbsRoutes)
 
 app.listen(PORT, () =>{
-  console.log(`db api server is running in http://localhost:${PORT}`)
+  log.info('--------------------------------------------------------------------')
+  log.info(`[ REST-SERVER ] is running in http://localhost:${PORT}`)
+  log.info('--------------------------------------------------------------------')
 })

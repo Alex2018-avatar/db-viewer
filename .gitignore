@@ -5,3 +5,6 @@ package-lock.json
 web/
 test.js
 sample.js
+sample copy.js
+src/index copy.js
+**/logs

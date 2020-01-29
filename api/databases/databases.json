@@ -1,122 +1,65 @@
 [
   {
-    "id": 1579712146010,
+    "id": 1580319420028,
     "type": "MARIADB",
     "connection": {
-      "id": 1579712146010,
-      "database": "tommy_db",
-      "hostname": "100.10.10.10",
-      "port": "3000",
-      "user": "operador",
+      "id": 1580319420028,
+      "database": "ordreturns",
+      "hostname": "127.0.0.1",
+      "port": "3308",
+      "user": "userdb",
       "password": ""
     },
     "views": [
       {
-        "name": "getSales.sql",
-        "path": "views/mariadb/getSales.sql",
-        "query": "SELECT * \nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695;"
+        "name": "demo.sql",
+        "path": "views/mariadb/demo.sql",
+        "query": "SELECT \n\tRETURNSTYPE_ID, \n   GRANDTOTAL, \n\tUPDATEDTIME,\n\tSTATUS,\n\tADD_NAME,\n\tADD_STATE,\n\tADD_PHONE1,\n\tADD_PHONE1,\n\tPAY_NAME\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
       }
     ]
   },
   {
-    "id": 1579712482068,
-    "type": "MYSQL",
+    "id": 1580326471288,
+    "type": "MARIADB",
     "connection": {
-      "id": 1579712482068,
-      "database": "cambios_dev",
-      "hostname": "127.0.0.1",
+      "id": 1580326471288,
+      "database": "sds",
+      "hostname": "sd",
+      "port": "sd",
+      "user": "sd",
+      "password": ""
+    },
+    "views": [
+      {
+        "name": "sd.sql",
+        "path": "views/mariadb/sd.sql",
+        "query": "ds"
+      }
+    ]
+  },
+  {
+    "id": 1579708812352,
+    "type": "DB2",
+    "connection": {
+      "id": 1579708812352,
+      "database": "difare_demo",
+      "hostname": "169.45.12.10",
       "port": "3306",
       "user": "operador",
       "password": ""
     },
     "views": [
       {
-        "name": "getDevoluciones.sql",
-        "path": "views/mysql/getDevoluciones.sql",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\n\t\t ADD_ADDRESS1,\n\t\t PAY_EMAIL1,\n\t\t COURIER_COUNTRY,\n\t\t RESPONSE_TO_DATA\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      }
-    ]
-  },
-  {
-    "id": 1579733768809,
-    "type": "DB2",
-    "connection": {
-      "id": 1579733768809,
-      "database": "sadasdas",
-      "hostname": "sadasd",
-      "port": "sadsad",
-      "user": "sadsadsad",
-      "password": ""
-    },
-    "views": [
-      {
-        "name": "sadasdsad.sql",
-        "path": "views/db2/sadasdsad.sql",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\n\t\t ADD_ADDRESS1,\n\t\t PAY_EMAIL1,\n\t\t COURIER_COUNTRY,\n\t\t RESPONSE_TO_DATA\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
+        "name": "sad1.sql",
+        "path": "SELECT * FROM DEMO1;"
       },
       {
-        "name": "getDevoluciones22.sql",
-        "path": "views/db2/getDevoluciones22.sql",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
+        "name": "sad2.sql",
+        "path": "SELECT * FROM DEMO2;"
       },
       {
-        "name": "sdsdsdsd",
-        "path": "views/db2/sdsdsdsd",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      }
-    ]
-  },
-  {
-    "id": 1579733878590,
-    "type": "MYSQL",
-    "connection": {
-      "id": 1579733878590,
-      "database": "sadsadas",
-      "hostname": "sadsad",
-      "port": "sadasdsa",
-      "user": "sadawsd",
-      "password": ""
-    },
-    "views": [
-      {
-        "name": "asdasdas",
-        "path": "views/mysql/asdasdas",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "dsasvffd",
-        "path": "views/mysql/dsasvffd",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "asdasdfg",
-        "path": "views/mysql/asdasdfg",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "sadasdasd",
-        "path": "views/mysql/sadasdasd",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "sadbvnfg",
-        "path": "views/mysql/sadbvnfg",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "sdfsdfgfh",
-        "path": "views/mysql/sdfsdfgfh",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "sadfsadasv",
-        "path": "views/mysql/sadfsadasv",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
-      },
-      {
-        "name": "asdasdasdd",
-        "path": "views/mysql/asdasdasdd",
-        "query": "SELECT RETURNSTYPE_ID, \n       GRANDTOTAL, \n\t\t UPDATEDTIME,\n\t\t STATUS,\n\t\t ADD_NAME,\n\t\t ADD_STATE,\n\t\t ADD_PHONE1,\n\t\t ADD_PHONE1,\n\t\t PAY_NAME,\nFROM ordreturns\nWHERE USERSIDENTIFIER = 135652695\nORDER BY CREATEDTIME ASC;\n"
+        "name": "sad3.sql",
+        "path": "SELECT * FROM DEMO3;"
       }
     ]
   }

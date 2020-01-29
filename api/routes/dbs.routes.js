@@ -8,6 +8,7 @@ const router = express.Router()
 
 const DBViewer = require('../services/dbs.services')
 const { isAuthenticated } = require('../services/isAuthenticated')
+const log = require('../services/logger')
 
 router.get('/v1/@all', [isAuthenticated], (request, response) => {
   const dbId = request.query.q;
@@ -30,7 +31,7 @@ router.get('/v1/@all', [isAuthenticated], (request, response) => {
 router.post('/v1/registerDB', async (request, response) => {
   try {
     const { type, views } = request.body;
-    //console.log(views)
+
     const dbs = new DBViewer()
     let querystmt = dbs.getRegisteredDatabases();
 
@@ -41,6 +42,7 @@ router.post('/v1/registerDB', async (request, response) => {
     createViewSQL(type, views)
     response.send(querystmt)
   } catch (error) {
+    log.error(`${error.message}`)
     response.status(400).send({ message: error.message })
   }
 })
@@ -83,14 +85,6 @@ function createViewSQL(type, views) {
       break;
   }
 }
-/**
- * Add View
- * Agrega una vista a una bd registrada y su sentencia sql correspondiente
- * para que esta luego pueda ser invocada.
- */
-router.post('/addView', (request, response) => {
-
-})
 
 router.get('/v1/getById/:id', (request, response) => {
   const id = request.params.id;
