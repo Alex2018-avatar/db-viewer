@@ -123,7 +123,8 @@ function createApplication(name, dir) {
       'express': '^4.17.1',
       "cors": "^2.8.5",
       "helmet": "^3.21.2",
-      "compression": "^1.7.4"
+      "compression": "^1.7.4",
+      "dotenv": "^8.2.0"
     }
   }
   mkdir(dir, 'databases/views')
@@ -143,6 +144,7 @@ function createApplication(name, dir) {
 
   //copyTemplate('index.html', path.join(dir, 'index.html'))
   copyTemplate('index.js', path.join(dir, 'index.js'))
+  copyTemplate('.env', path.join(dir, '.env'))
   copyTemplateMulti(`${ROOT_PATH_FROM}/routes`, dir + '/routes', '*.js')
   copyTemplateMulti(`${ROOT_PATH_FROM}/services`, dir + '/services', '*.js')
   copyTemplateMulti(`${ROOT_PATH_FROM}/databases/`, dir + '/databases', '*.js')

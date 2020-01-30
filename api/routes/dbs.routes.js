@@ -30,17 +30,24 @@ router.get('/v1/@all', [isAuthenticated], (request, response) => {
  */
 router.post('/v1/registerDB', async (request, response) => {
   try {
-    const { type, views } = request.body;
+    const { id, type, views } = request.body;
 
     const dbs = new DBViewer()
     let querystmt = dbs.getRegisteredDatabases();
 
-    querystmt.push(request.body)
-    fs.writeFile(`${getFolderPath()}databases/databases.json`, JSON.stringify(querystmt, undefined, 2), 'utf8', err => {
-      if (err) return console.log(err);
-    });
-    createViewSQL(type, views)
-    response.send(querystmt)
+    if (querystmt.some(item => item.id === id)) {
+      response.status(400).send({
+        message: 'The entered ID already exists in the database',
+        errorCode: 'duplicatedObject'
+      })
+    } else {
+      querystmt.push(request.body)
+      fs.writeFile(`${getFolderPath()}databases/databases.json`, JSON.stringify(querystmt, undefined, 2), 'utf8', err => {
+        if (err) return console.log(err);
+      });
+      createViewSQL(type, views)
+      response.send(querystmt)
+    }
   } catch (error) {
     log.error(`${error.message}`)
     response.status(400).send({ message: error.message })
@@ -48,18 +55,19 @@ router.post('/v1/registerDB', async (request, response) => {
 })
 
 
+
 function getFolderPath() {
-  if (process.env.NODE_API_DB_SETUP === 'OK') {
+  if (!process.env.NODE_API_DB_SETUP) {
     return './.apiserver/'
   }
   return './api/'
 }
 
 function writerJS(views, path) {
-  views.forEach((v) => { 
-    var file = fs.createWriteStream(`${path}${v.name.replace('.sql','')}.sql`);
-    file.on('error', function(err) {console.log(err) /* error handling */ });
-    file.write(v.query); 
+  views.forEach((v) => {
+    var file = fs.createWriteStream(`${path}${v.name.replace('.sql', '')}.sql`);
+    file.on('error', function (err) { console.log(err) /* error handling */ });
+    file.write(v.query);
     file.end();
   });
 }
