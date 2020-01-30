@@ -7,8 +7,6 @@ const mkdirp = require('mkdirp')
 const fs = require('fs')
 const minimatch = require('minimatch')
 const path = require('path')
-const childProcess = require('child_process');
-const {exec, fork, spawn } = require('child_process');
 const os = require('os');
 const shell = require('shelljs')
 

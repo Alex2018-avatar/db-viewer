@@ -18,29 +18,13 @@ $ npm i db-avatar-init
 const DBViewer = require('db-avatar-init')
 
 const options = {
-  dbId: 'xxxx',
+  dbId: 000000,
   viewName: 'xxxxx.sql',
   user: 'xxxxx',
   password: 'xxxx'
 };
 
-const mailConfig = {
-  mail: true,
-  mailConfig: {
-    "name": "test",
-    "from": "ddddd@gggggg.com",
-    "to": [
-      "xxxxx@xxxx.com",
-    ],
-    "cc": [],
-    "bcc": []
-  },
-  subject: "Subject Test",
-  htmlBody: `<p></p>
-  `
-}
-
-DBViewer.executeView(options, mailConfig, (error, data) => {
+DBViewer.executeView(options, (error, data) => {
   if(error) {
     console.log(error.message)
   } else {

@@ -94,7 +94,7 @@ const logger = winston.createLogger({
     new winston.transports.File({
       name: 'file#error',
       level: 'error',
-      filename: `${__dirname}/../../logs/applications-logs-error.log`,
+      filename: `${__dirname}/../logs/applications-logs-error.log`,
       handleExceptions: true,
       json: true,
       maxsize: 5242880, // 5MB
