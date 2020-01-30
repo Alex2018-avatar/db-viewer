@@ -37,15 +37,16 @@ DBViewer.executeView(options, (error, data) => {
 
 ```json
 "scripts": {
-  "db-init": "db-init",
-  "mail-init": "init-credentials"
+  "init-db": "db-init",
+  "init-api": "init-api",
+  "server": "node ./.apiserver/index.js"
 },
 ```
 
 # execute
 - Create api folder to root path
 ```bash
-$ npm run db-init
+$ npm run init-db
 ```
 
 # Init gmail configurations 
@@ -55,12 +56,22 @@ $ npm run db-init
 $ npm run mail-init
 ```
 
+# Server init
+- start server REST API
 ```bash
-Do you want to create a credential structure path? yes || no > - type yes to init credentials
-Please enter gmail credentials [in json format] ? - enter google credentials downloaded from google account
-ownload the confirmation code of: https://...... - copy and paste the url in the browser
-Ingrese Codigo: - paste the confirmation code from the url
+$ npm run server
 ```
+
+# Environment Variables
+### Environment variable for Authentication
+- USER_TEMP_API={{username to login}}
+- PASS_TEMP_API={{username passwordto login}}
+- SECRET_PASS_API={{secreat to create token}}
+
+### Environment variable app
+- NODE_API_DB_PORT={{application port}}
+
+### defaults
 ## License
 
   [MIT](LICENSE)
@@ -68,7 +79,4 @@ Ingrese Codigo: - paste the confirmation code from the url
 ### Collaborators
 1. First list item
    - First nested list item
-     - Second nested list item
-
-
-#process.env.NODE_API_DB_SETUP=OK
+   - Second nested list item

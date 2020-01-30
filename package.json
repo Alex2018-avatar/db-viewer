@@ -1,10 +1,10 @@
 {
   "name": "db-avatar-init",
-  "version": "1.2.18",
+  "version": "1.3.01",
   "description": "",
   "main": "index.js",
   "bin": {
-    "db-init": "bin/index.js",
+    "init-db": "bin/index.js",
     "init-sh": "bin/build.sh",
     "init-api": "bin/api.js"
   },
