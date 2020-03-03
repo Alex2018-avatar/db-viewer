@@ -137,10 +137,20 @@ npm run server
 <h2 align="center">Test</h2>
 Test Api rest using command line
 
-**Execute**: Create api folder to root path
+**Execute**: to call api rest
 ```bash
  npm run init-api
 ```
+
+Do you want to login? :: [Y, N] : 
+
+Enter user body request: {"logonId": "XXXXXXX", "logonPassword": "XXXXXXXXX"}
+  ----------------------------------------------------
+
+status 200
+
+ What do you want to do? [LIST, INSERT]
+ 
 ```bash
 
 ```
