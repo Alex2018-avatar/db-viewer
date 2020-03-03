@@ -57,8 +57,9 @@
 3. [Concepts](#concepts)
 3. [Examples](#examples)
 4. [Credentials](#credentials)
-5. [Help](#help)
-5. [License](#license)
+5. [Environment Variables](#environment)
+6. [Help](#help)
+7. [License](#license)
 
 
 <!-- [![Avatar Logo](https://www.avatar-global.com/website/img/logo.png)](https://www.avatar-global.com/) -->
@@ -121,7 +122,7 @@ DBViewer.executeView(options, (error, data) => {
 npm run server
 ```
 
-
+<h2 aling="Environment Variables">Environment Variables</h2>
 # Environment Variables
 ### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
