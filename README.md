@@ -145,12 +145,12 @@ Test Api rest using command line
 Do you want to login? :: [Y, N] : 
 
 Enter user body request: {"logonId": "XXXXXXX", "logonPassword": "XXXXXXXXX"}
-  ----------------------------------------------------
+----------------------------------------------------
 
 status 200
 
  What do you want to do? [LIST, INSERT]
- 
+
 ```bash
 
 ```
