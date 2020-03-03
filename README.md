@@ -151,6 +151,31 @@ Enter user body request: {"logonId": "XXXXXXX", "logonPassword": "XXXXXXXXX"}
 status 200
 
  What do you want to do? [LIST, INSERT]
+ list
+----------------------------------------------------------------------------------
+[
+  {
+    id: 1580319420028,
+    type: 'MARIADB',
+    connection: {
+      id: 12111121,
+      database: 'xxxxxxx',
+      hostname: 'xxxx',
+      port: 'xxxxxx',
+      user: 'xxxxxx',
+      password: ''
+    },
+    views: [ [Object] ]
+  }
+]
+
+insert
+----------------------------------------------------------------------------------
+ 
+  Enter new DB in json format: 
+  ----------------------------------------------------
+{ "id": 111111, "type": "xxxx", "connection": { "id": 111111,"database": "xxxx", "hostname": "xxxxxx", "port": "xxxx", "user": "xxxx" }, "views": [{ "name": "xxx.sql", "path": "views/mariadb/xxx.sql", "query": "SELECT * FROM xxxxxxx;"}]}
+status response:  200
 ```
 
 <h2 align="center">Help</h2>
