@@ -124,7 +124,7 @@ npm run server
 
 <h2 align="center">Configuration</h2>
 
-**Environment Variables**: 
+**Environment Variables**: Environment Variables API configuration
 #### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
 - PASS_TEMP_API={{username passwordto login}}
