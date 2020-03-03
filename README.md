@@ -113,8 +113,9 @@ DBViewer.executeView(options, (error, data) => {
 ```
 
 **Start**: Start Server
-<p>default port 3200</p>
-<p>test: http://localhost:3000/</p>
+- default port 3200
+- test: http://localhost:3000/
+
 ```bash
 npm run server
 ```
