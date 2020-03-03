@@ -1,6 +1,6 @@
 {
   "name": "db-avatar-init",
-  "version": "1.3.01",
+  "version": "1.3.02",
   "description": "",
   "main": "index.js",
   "bin": {

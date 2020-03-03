@@ -58,6 +58,7 @@
 3. [Examples](#examples)
 4. [Credentials](#credentials)
 5. [Configuration](#configuration)
+6. [Test](#test)
 6. [Help](#help)
 7. [License](#license)
 
@@ -103,7 +104,7 @@ DBViewer.executeView(options, (error, data) => {
 
 ```json
 "scripts": {
-  "init-db": "db-init",
+  "init-db": "init-db",
   "init-api": "init-api",
   "server": "node ./.apiserver/index.js"
 },
@@ -133,6 +134,16 @@ npm run server
 #### Environment variable app
 - NODE_API_DB_PORT={{application port}}
 
+<h2 align="center">Test</h2>
+Test Api rest using command line
+
+**Execute**: Create api folder to root path
+```bash
+ npm run init-api
+```
+```bash
+
+```
 
 <h2 align="center">Help</h2>
 
