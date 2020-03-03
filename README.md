@@ -122,7 +122,8 @@ DBViewer.executeView(options, (error, data) => {
 npm run server
 ```
 
-<h2 aling="center">Configuration</h2>
+<h2 align="center">Configuration</h2>
+
 # Environment Variables
 ### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
