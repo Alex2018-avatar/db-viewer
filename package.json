@@ -9,6 +9,7 @@
     "init-api": "bin/api.js"
   },
   "scripts": {
+    "api": "node ./.apiserver/index.js",
     "test": "echo \"Error: no test specifiedssss\" && exit 1",
     "dev": "webpack --mode development",
     "start": "webpack-dev-server --mode development --open",
