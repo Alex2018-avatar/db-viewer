@@ -57,7 +57,7 @@
 3. [Concepts](#concepts)
 3. [Examples](#examples)
 4. [Credentials](#credentials)
-5. [Environment Variables](#environment)
+5. [Configuration](#configuration)
 6. [Help](#help)
 7. [License](#license)
 
@@ -122,7 +122,7 @@ DBViewer.executeView(options, (error, data) => {
 npm run server
 ```
 
-<h2 aling="center">Environment Variables</h2>
+<h2 aling="center">Configuration</h2>
 # Environment Variables
 ### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
