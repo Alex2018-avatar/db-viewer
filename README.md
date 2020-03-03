@@ -97,7 +97,7 @@ DBViewer.executeView(options, (error, data) => {
 })
 ```
 
-## add in your package.json scripts
+**Add**: in your package.json
 
 ```json
 "scripts": {
@@ -107,10 +107,16 @@ DBViewer.executeView(options, (error, data) => {
 },
 ```
 
-# execute
-- Create api folder to root path
+**Execute**: Create api folder to root path
 ```bash
-$ npm run init-db
+ npm run init-db
+```
+
+**Start**: Start Server
+default port 3200
+test: http://localhost:3000/
+```bash
+npm run server
 ```
 
 # Init gmail configurations 
