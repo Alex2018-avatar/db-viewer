@@ -122,7 +122,7 @@ DBViewer.executeView(options, (error, data) => {
 npm run server
 ```
 
-<h2 aling="Environment Variables">Environment Variables</h2>
+<h2 aling="center">Environment Variables</h2>
 # Environment Variables
 ### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
@@ -137,6 +137,6 @@ npm run server
 
 **Note**: Not all options are currently supported.
 
-<h2 align="license">License</h2>
+<h2 align="center">License</h2>
 
   [MIT](LICENSE)
