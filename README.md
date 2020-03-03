@@ -124,13 +124,13 @@ npm run server
 
 <h2 align="center">Configuration</h2>
 
-# Environment Variables
-### Environment variable for Authentication
+**Environment Variables**: 
+#### Environment variable for Authentication
 - USER_TEMP_API={{username to login}}
 - PASS_TEMP_API={{username passwordto login}}
 - SECRET_PASS_API={{secreat to create token}}
 
-### Environment variable app
+#### Environment variable app
 - NODE_API_DB_PORT={{application port}}
 
 
