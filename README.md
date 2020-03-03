@@ -56,9 +56,8 @@
 2. [Introduction](#introduction)
 3. [Concepts](#concepts)
 3. [Examples](#examples)
-4. [Credentials](#credentials)
-5. [Configuration](#configuration)
-6. [Test](#test)
+4. [Configuration](#configuration)
+5. [Test](#test)
 6. [Help](#help)
 7. [License](#license)
 
