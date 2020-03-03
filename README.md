@@ -58,6 +58,7 @@
 3. [Examples](#examples)
 4. [Credentials](#credentials)
 5. [Help](#help)
+5. [License](#license)
 
 
 <!-- [![Avatar Logo](https://www.avatar-global.com/website/img/logo.png)](https://www.avatar-global.com/) -->
@@ -112,7 +113,7 @@ DBViewer.executeView(options, (error, data) => {
  npm run init-db
 ```
 
-**Start**: Start Server
+**Start**: Start server REST API
 - default port 3200
 - test: http://localhost:3000/
 
@@ -120,18 +121,6 @@ DBViewer.executeView(options, (error, data) => {
 npm run server
 ```
 
-# Init gmail configurations 
-- download gmail acount credentials
-
-```bash
-$ npm run mail-init
-```
-
-# Server init
-- start server REST API
-```bash
-$ npm run server
-```
 
 # Environment Variables
 ### Environment variable for Authentication
@@ -142,12 +131,11 @@ $ npm run server
 ### Environment variable app
 - NODE_API_DB_PORT={{application port}}
 
-### defaults
-## License
+
+<h2 align="center">Help</h2>
+
+**Note**: Not all options are currently supported.
+
+<h2 align="license">License</h2>
 
   [MIT](LICENSE)
-
-### Collaborators
-1. First list item
-   - First nested list item
-   - Second nested list item
