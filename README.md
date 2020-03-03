@@ -61,16 +61,18 @@
 
 
 <!-- [![Avatar Logo](https://www.avatar-global.com/website/img/logo.png)](https://www.avatar-global.com/) -->
-
-# db-viewer
-Database Management Module
-
-
-## Installation
+<h2 align="center">Install</h2>
+Install with npm:
 
 ```bash
-$ npm i db-avatar-init
+npm install db-avatar-init
 ```
+
+<h2 align="center">Introduction</h2>
+
+db-viewer is a package of modules. Its main objective is to easily configure and use different databases.
+
+<h2 align="center">Examples</h2>
 
 ## Usage
 ```js
